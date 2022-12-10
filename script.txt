@@ -1,0 +1,14 @@
+√#!/bin/bash
+wall "	#architecture: $(uname -a)
+	#CPU physical: $(cat /proc/cpuinfo | grep "physical id" | wc -l)
+	#vCPU: $(cat /proc/cpuinfo | grep processor | wc -l)
+	#Memory Usage: $(free -m | grep Mem | awk ' {printf "%s/%sMB (%.2f%%)", $3,$2,$3*100/$2}')
+	#Disk Usage: $(df -h --total | grep total | awk '{printf "%s/%sb (%.2f%%)",$3*1024,$2,$5}')
+	#CPU load: $(top -bn1 | grep "Cpu" | awk '{printf("%.1f%%",$2+$4)}')
+	#Last boot: $(who -b | awk '{printf $3,$4}')
+	#LVM use: $(if [$(lsblk | grep lvm | wc -l) == 0]; then echo "no"; else echo "yes"; fi)
+	#Connections TCP: $(netstate -anp | grep ESTABLISHED | wc -l)
+	#User log: $(who | awk '{printf $1}' |sort -u | wc -l)
+	#Network: IP $(hostname -I)($(ip link | grep "link/ether" | awk '{printf ($2)}'))
+	#Sudo: $(cat /var/log/sudo/sudo.log | grep COMMAND | wc -l:cmd
+	"
